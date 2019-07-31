@@ -1,5 +1,4 @@
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
 
 class formsPOM:
     URL = 'https://www.ultimateqa.com/filling-out-forms/'

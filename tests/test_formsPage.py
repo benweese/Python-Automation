@@ -1,7 +1,6 @@
-from tests.FormsPOM import formsPOM
+from POMS.FormsPOM import formsPOM
 import pytest
 from selenium import webdriver
-from selenium.webdriver.common.by import By
 import os
 
 @pytest.fixture
