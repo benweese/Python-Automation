@@ -23,7 +23,11 @@ class formsPOM:
     ShLinkedIn = (By.CLASS_NAME, 'share-linkedin')
     ShTumblr = (By.CLASS_NAME, 'share-tumblr')
 
-
+    Twitter = (By.CLASS_NAME, 'swp_share_link')
+    LinkedIn = (By.CLASS_NAME, 'swp_linkedin')
+    Email = (By.CLASS_NAME, 'swp_email')
+    Tumblr = (By.CLASS_NAME, 'swp_tumblr')
+    Facebook = (By.CLASS_NAME, 'swp_facebook')
 
     def __init__(self, browser):
         self.browser = browser
