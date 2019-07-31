@@ -66,3 +66,5 @@ class formsPOM:
 
         captcha.send_keys(str(answer))
 
+    def tweet(self):
+        self.browser.find_element(*self.ShTweet).click()
