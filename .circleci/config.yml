@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:jessie-browsers
+      - image: circleci/python:3.7.3-browsers
     ## Customize dependencies
     dependencies:
       pre:
@@ -17,4 +17,8 @@ jobs:
           name: Start Selenium
           command: java -jar selenium-server-standalone-3.5.3.jar -log test-reports/selenium.log
           background: true
-      - run: python tests/formsPage.py
+      - run:
+          command: |
+            sudo pip install pipenv
+            pipenv install
+            pipenv run "pytest"
