@@ -21,4 +21,4 @@ jobs:
           command: |
             sudo pip install pipenv
             pipenv install
-            pipenv run "pytest"
+            pipenv run python tests/formsPage.py
