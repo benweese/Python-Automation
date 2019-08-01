@@ -3,9 +3,15 @@ jobs:
   build:
     docker:
       - image: circleci/python:3.7.3-browsers
+        environment: # environment variables for primary container
+          PIPENV_VENV_IN_PROJECT: true
 
+    steps:
+      - checkout
       - run:
           command: |
             pip3 install pipenv
             pipenv install
+      - run:
+          command: |
             pipenv run python3 tests/test_formsPage.py
