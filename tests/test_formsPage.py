@@ -71,16 +71,16 @@ def test_form2(browser):
         browser.quit()
 
 
- def share_tweet(browser):
-     browser.implicitly_wait(10)
+def share_tweet(browser):
+    browser.implicitly_wait(10)
 
-     new_window = browser.window_handles[1]
-     browser.switch_to.window(new_window)
-     time.sleep(10)
+    new_window = browser.window_handles[1]
+    browser.switch_to.window(new_window)
+    time.sleep(10)
 
-     tw_url = "https://twitter.com/intent/tweet?text=Complicated+Page&url=https%3A%2F%2Fwww.ultimateqa.com%2Fcomplicated-page%2F&via=Nikolay_A00";
-     assert browser.current_url == tw_url
-     browser.quit()
+    tw_url = "https://twitter.com/intent/tweet?text=Complicated+Page&url=https%3A%2F%2Fwww.ultimateqa.com%2Fcomplicated-page%2F&via=Nikolay_A00";
+    assert browser.current_url == tw_url
+    browser.quit()
 
 
 # def share_facebook(browser):
