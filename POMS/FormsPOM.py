@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 
+
 class formsPOM:
     URL = 'https://www.ultimateqa.com/filling-out-forms/'
 

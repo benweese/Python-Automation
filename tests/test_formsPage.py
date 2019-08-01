@@ -1,19 +1,8 @@
-import os
-import pytest
 import time
 
 from POMS.FormsPOM import formsPOM
-from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
-
-@pytest.fixture
-def browser():
-    driver = webdriver.Chrome(executable_path=os.getcwd())
-    driver.implicitly_wait(10)
-    yield driver
-    driver.quit()
 
 
 def test_form1(browser):
@@ -71,7 +60,7 @@ def test_form2(browser):
         browser.quit()
 
 
-def share_tweet(browser):
+def test_share_tweet(browser):
     browser.implicitly_wait(10)
 
     new_window = browser.window_handles[1]
@@ -83,37 +72,37 @@ def share_tweet(browser):
     browser.quit()
 
 
-# def share_facebook(browser):
+# def test_share_facebook(browser):
 # Place Holder
 
 
-# def share_pocket(browser):
+# def test_share_pocket(browser):
 # Place Holder
 
 
-# def share_linkedin(browser):
+# def test_share_linkedin(browser):
 # Place Holder
 
 
-# def share_tumblr(browser):
+# def test_share_tumblr(browser):
 # Place Holder
 
 
-# def twitter_link(browser):
+# def test_twitter_link(browser):
 # Place Holder
 
 
-# def linkedin_link(browser):
+# def test_linkedin_link(browser):
 # Place Holder
 
 
-# def email_link(browser):
+# def test_email_link(browser):
 # Place Holder
 
 
-# def tumblr_link(browser):
+# def test_tumblr_link(browser):
 # Place Holder
 
 
-# def facebook_link(browser):
+# def test_facebook_link(browser):
 # Place Holder
