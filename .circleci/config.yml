@@ -3,23 +3,12 @@ jobs:
   build:
     docker:
       - image: circleci/python:3.7.3-browsers
-    ## Customize dependencies
-    dependencies:
-      pre:
-        - sudo pip install -U selenium
-    steps:
-      - checkout
-      - run: mkdir test-reports
-      - run:
-          name: Download Selenium
-          command: curl -O http://selenium-release.storage.googleapis.com/3.5/selenium-server-standalone-3.5.3.jar
-      - run:
-          name: Start Selenium
-          command: java -jar selenium-server-standalone-3.5.3.jar -log test-reports/selenium.log
-          background: true
+        environment:
+          PIPENV_VENV_IN_PROJECT: true
       - run:
           command: |
-            pip3 uninstall pytest
             pip3 install pipenv
             pipenv install
+      - run:
+          command: |
             pipenv run python3 tests/test_formsPage.py
