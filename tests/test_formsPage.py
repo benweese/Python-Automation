@@ -183,7 +183,7 @@ def test_tumblr_link(browser):
     browser.switch_to.window(new_window)
     time.sleep(10)
 
-    nw_url = 'https://www.tumblr.com/login?redirect_to=https%3A%2F%2Fwww.tumblr.com%2Fwidgets%2Fshare%2Ftool%3FshareSource%3Dlegacy%26canonicalUrl%3D%26url%3Dhttps%253A%252F%252Fwww.ultimateqa.com%252Ffilling-out-forms%252F%26title%3DFilling%2BOut%2BForms'
+    nw_url = 'https://www.tumblr.com/login?redirect_to=https%3A%2F%2Fwww.tumblr.com%2Fwidgets%2Fshare%2Ftool%3Fposttype%3Dlink%26canonicalUrl%3Dhttps%253A%252F%252Fwww.ultimateqa.com%252Ffilling-out-forms%252F%26title%3DFilling%2BOut%2BForms'
     assert browser.current_url == nw_url
     browser.quit()
 
