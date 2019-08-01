@@ -21,4 +21,6 @@ jobs:
           command: |
             sudo pip3 install pipenv
             pipenv install
-            pipenv run python3 tests/test_formsPage.py
+            pipenv run pytest
+
+    ## python3 tests/test_formsPage.py
