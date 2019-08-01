@@ -19,6 +19,6 @@ jobs:
           background: true
       - run:
           command: |
-            sudo pip install pipenv
+            sudo pip3 install pipenv
             pipenv install
-            pipenv run python tests/test_formsPage.py
+            pipenv run python3 tests/test_formsPage.py
