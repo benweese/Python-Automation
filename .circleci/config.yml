@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/python:3.7.3-browsers
+      - image: joyzoursky/python-chromedriver
         environment: # environment variables for primary container
           PIPENV_VENV_IN_PROJECT: true
 
