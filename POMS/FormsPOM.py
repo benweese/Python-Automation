@@ -14,8 +14,8 @@ class formsPOM:
     ContactMessage1 = (By.ID, 'et_pb_contact_message_0')
     ContactMessage2 = (By.ID, 'et_pb_contact_message_1')
 
-    Submit1 = (By.CSS_SELECTOR, "#et_pb_contact_form_0 .et_pb_contact_submit")
-    Submit2 = (By.CSS_SELECTOR, "#et_pb_contact_form_1 .et_pb_contact_submit")
+    Submit1 = (By.CSS_SELECTOR, "#et_pb_contact_form_0 button.et_pb_contact_submit")
+    Submit2 = (By.CSS_SELECTOR, "#et_pb_contact_form_1 button.et_pb_contact_submit")
 
     Captcha = (By.NAME, 'et_pb_contact_captcha_1')
 
@@ -56,14 +56,16 @@ class formsPOM:
         message_input.send_keys(message)
 
     def get_message_1(self):
-        return self.browser.find_element(*self.ContactMessage1).get_attribute('value')
+        message = self.browser.find_element(*self.ContactMessage1)
+        return message.get_attribute('value')
 
     def message_2(self, message):
         message_input = self.browser.find_element(*self.ContactMessage2)
         message_input.send_keys(message)
 
     def get_message_2(self):
-        return self.browser.find_element(*self.ContactMessage2).get_attribute('value')
+        message = self.browser.find_element(*self.ContactMessage2)
+        return message.get_attribute('value')
 
     def submit1(self):
         submit = self.browser.find_element(*self.Submit1)
