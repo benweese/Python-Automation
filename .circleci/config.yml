@@ -19,7 +19,7 @@ jobs:
           name: Install Dependencies
           command: |
             sudo pip3 install pipenv
-            pipenv install
+            pipenv install --dev
       - save_cache: # cache Python dependencies using checksum of Pipfile as the cache-key
           key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
           paths:
