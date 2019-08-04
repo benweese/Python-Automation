@@ -85,10 +85,12 @@ class formsPOM:
         captcha.send_keys(str(answer))
 
     def wait_form1(self, success_message):
-        WebDriverWait(self.browser, 10).until(EC.text_to_be_present_in_element(*self.ContactForm1, success_message))
+        wait = WebDriverWait(self.browser, 10)
+        wait.until(EC.text_to_be_present_in_element(self.ContactForm1, success_message))
 
     def wait_form2(self, success_message):
-        WebDriverWait(self.browser, 10).until(EC.text_to_be_present_in_element(*self.ContactForm1, success_message))
+        wait = WebDriverWait(self.browser, 10)
+        wait.until(EC.text_to_be_present_in_element(self.ContactForm2, success_message))
 
     def get_form_text1(self):
         text = self.browser.find_element(*self.ContactForm1)
