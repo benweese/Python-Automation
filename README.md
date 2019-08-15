@@ -44,6 +44,96 @@ With testing our Circle-CI runner will use maven to run our automation scripts i
 
 ## Code Example
 
+<b>conftest.py</b>
+```
+import os
+import pytest
+
+from selenium.webdriver import Chrome
+
+@pytest.fixture
+def browser():
+    driver = Chrome(executable_path=os.getcwd()+'/chromedriver')
+    driver.implicitly_wait(10)
+    yield driver
+    driver.quit()
+```
+
+<b>Page Object</b>
+```
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+class formsPOM:
+    URL = 'https://www.ultimateqa.com/filling-out-forms/'
+
+    ContactForm1 = (By.ID, 'et_pb_contact_form_0')
+    ContactForm2 = (By.ID, 'et_pb_contact_form_1')
+
+    ContactName1 = (By.ID, 'et_pb_contact_name_0')
+    ContactName2 = (By.ID, 'et_pb_contact_name_1')
+    ...
+    Twitter = (By.CLASS_NAME, 'swp_share_link')
+    LinkedIn = (By.CLASS_NAME, 'swp_linkedin')
+    Email = (By.CLASS_NAME, 'swp_email')
+    Tumblr = (By.CLASS_NAME, 'swp_tumblr')
+    Facebook = (By.CLASS_NAME, 'swp_facebook')
+
+    def __init__(self, browser):
+        self.browser = browser
+
+    def load(self):
+        self.browser.get(self.URL)
+
+    def name_1(self, name):
+        name_input = self.browser.find_element(*self.ContactName1)
+        name_input.send_keys(name)
+
+    def get_name_1(self):
+        return self.browser.find_element(*self.ContactName1).get_attribute('value')
+    ...
+    def captcha_calc(self):
+        captcha = self.browser.find_element(*self.Captcha)
+        cap1 = captcha.get_attribute('data-first_digit')
+        cap2 = captcha.get_attribute('data-second_digit')
+
+        answer = int(cap1) + int(cap2)
+
+        captcha.send_keys(str(answer))
+```
+  
+<b>Test</b>
+```
+import time
+
+from POMS.FormsPOM import formsPOM
+
+
+
+def test_form1(browser):
+    name = 'John Doe'
+
+    forms_page = formsPOM(browser)
+    forms_page.load()
+    forms_page.name_1(name)
+    assert forms_page.get_name_1() == name
+
+    message = 'I am Batman'
+    forms_page.message_1(message)
+    assert forms_page.get_message_1() == message
+
+    forms_page.submit1()
+
+    success_message = 'Form filled out successfully'
+
+    try:
+        forms_page.wait_form1(success_message)
+    finally:
+        assert forms_page.get_form_text1() == success_message
+        browser.quit()
+```
+
 ## Documentation
 - [Automate the Boring Stuff with Python](https://automatetheboringstuff.com/chapter11/)
 - [Behavior Driven Python with pytest-bdd](https://testautomationu.applitools.com/behavior-driven-python-with-pytest-bdd/)
