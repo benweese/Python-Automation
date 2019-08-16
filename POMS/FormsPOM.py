@@ -1,35 +1,54 @@
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+#!/usr/bin/env python
 
-class formsPOM:
+"""
+forms_POM.py: .
+"""
+
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+
+__author__ = "Ben Weese"
+__copyright__ = "Copyright 2019, Python Automation"
+__license__ = "MIT"
+__version__ = "1.0"
+__maintainer__ = "Ben Weese"
+__email__ = "ben@benweese.dev"
+__status__ = "refactor"
+
+
+class FormsPOM(object):
+    """
+    This is the Page Object Model used in test_forms_Page.py for the filling out forms section
+    of Ultimate QA's Automation Exercises.
+    """
     URL = 'https://www.ultimateqa.com/filling-out-forms/'
 
-    ContactForm1 = (By.ID, 'et_pb_contact_form_0')
-    ContactForm2 = (By.ID, 'et_pb_contact_form_1')
+    contact_form_1 = (By.ID, 'et_pb_contact_form_0')
+    contact_form_2 = (By.ID, 'et_pb_contact_form_1')
 
-    ContactName1 = (By.ID, 'et_pb_contact_name_0')
-    ContactName2 = (By.ID, 'et_pb_contact_name_1')
+    contact_name_1 = (By.ID, 'et_pb_contact_name_0')
+    contact_name_2 = (By.ID, 'et_pb_contact_name_1')
 
-    ContactMessage1 = (By.ID, 'et_pb_contact_message_0')
-    ContactMessage2 = (By.ID, 'et_pb_contact_message_1')
+    contact_message_1 = (By.ID, 'et_pb_contact_message_0')
+    contact_message_2 = (By.ID, 'et_pb_contact_message_1')
 
-    Submit1 = (By.CSS_SELECTOR, "#et_pb_contact_form_0 button.et_pb_contact_submit")
-    Submit2 = (By.CSS_SELECTOR, "#et_pb_contact_form_1 button.et_pb_contact_submit")
+    submit_1 = (By.CSS_SELECTOR, "#et_pb_contact_form_0 button.et_pb_contact_submit")
+    submit_2 = (By.CSS_SELECTOR, "#et_pb_contact_form_1 button.et_pb_contact_submit")
 
-    Captcha = (By.NAME, 'et_pb_contact_captcha_1')
+    captcha = (By.NAME, 'et_pb_contact_captcha_1')
 
-    ShTweet = (By.CLASS_NAME, 'share-twitter')
-    ShFacebook = (By.CLASS_NAME, 'share-facebook')
-    ShPocket = (By.CLASS_NAME, 'share-pocket')
-    ShLinkedIn = (By.CLASS_NAME, 'share-linkedin')
-    ShTumblr = (By.CLASS_NAME, 'share-tumblr')
+    sh_tweet = (By.CLASS_NAME, 'share-twitter')
+    sh_facebook = (By.CLASS_NAME, 'share-facebook')
+    sh_pocket = (By.CLASS_NAME, 'share-pocket')
+    sh_linkedin = (By.CLASS_NAME, 'share-linkedin')
+    sh_tumblr = (By.CLASS_NAME, 'share-tumblr')
 
-    Twitter = (By.CLASS_NAME, 'swp_share_link')
-    LinkedIn = (By.CLASS_NAME, 'swp_linkedin')
-    Email = (By.CLASS_NAME, 'swp_email')
-    Tumblr = (By.CLASS_NAME, 'swp_tumblr')
-    Facebook = (By.CLASS_NAME, 'swp_facebook')
+    twitter = (By.CLASS_NAME, 'swp_share_link')
+    linkedin = (By.CLASS_NAME, 'swp_linkedin')
+    email = (By.CLASS_NAME, 'swp_email')
+    tumblr = (By.CLASS_NAME, 'swp_tumblr')
+    facebook = (By.CLASS_NAME, 'swp_facebook')
 
     def __init__(self, browser):
         self.browser = browser
@@ -38,45 +57,45 @@ class formsPOM:
         self.browser.get(self.URL)
 
     def name_1(self, name):
-        name_input = self.browser.find_element(*self.ContactName1)
+        name_input = self.browser.find_element(*self.contact_name_1)
         name_input.send_keys(name)
 
     def get_name_1(self):
-        return self.browser.find_element(*self.ContactName1).get_attribute('value')
+        return self.browser.find_element(*self.contact_name_1).get_attribute('value')
 
     def name_2(self, name):
-        name_input = self.browser.find_element(*self.ContactName2)
+        name_input = self.browser.find_element(*self.contact_name_2)
         name_input.send_keys(name)
 
     def get_name_2(self):
-        return self.browser.find_element(*self.ContactName2).get_attribute('value')
+        return self.browser.find_element(*self.contact_name_2).get_attribute('value')
 
     def message_1(self, message):
-        message_input = self.browser.find_element(*self.ContactMessage1)
+        message_input = self.browser.find_element(*self.contact_message_1)
         message_input.send_keys(message)
 
     def get_message_1(self):
-        message = self.browser.find_element(*self.ContactMessage1)
+        message = self.browser.find_element(*self.contact_message_1)
         return message.get_attribute('value')
 
     def message_2(self, message):
-        message_input = self.browser.find_element(*self.ContactMessage2)
+        message_input = self.browser.find_element(*self.contact_message_2)
         message_input.send_keys(message)
 
     def get_message_2(self):
-        message = self.browser.find_element(*self.ContactMessage2)
+        message = self.browser.find_element(*self.contact_message_2)
         return message.get_attribute('value')
 
     def submit1(self):
-        submit = self.browser.find_element(*self.Submit1)
+        submit = self.browser.find_element(*self.submit_1)
         submit.click()
 
     def submit2(self):
-        submit = self.browser.find_element(*self.Submit2)
+        submit = self.browser.find_element(*self.submit_2)
         submit.click()
 
     def captcha_calc(self):
-        captcha = self.browser.find_element(*self.Captcha)
+        captcha = self.browser.find_element(*self.captcha)
         cap1 = captcha.get_attribute('data-first_digit')
         cap2 = captcha.get_attribute('data-second_digit')
 
@@ -85,56 +104,54 @@ class formsPOM:
         captcha.send_keys(str(answer))
 
     def wait_form1(self, success_message):
-        wait = WebDriverWait(self.browser, 10)
-        wait.until(EC.text_to_be_present_in_element(self.ContactForm1, success_message))
+        WebDriverWait(self.browser, 10).until(EC.text_to_be_present_in_element(self.contact_form_1, success_message))
 
     def wait_form2(self, success_message):
-        wait = WebDriverWait(self.browser, 10)
-        wait.until(EC.text_to_be_present_in_element(self.ContactForm2, success_message))
+        WebDriverWait(self.browser, 10).until(EC.text_to_be_present_in_element(self.contact_form_2, success_message))
 
     def get_form_text1(self):
-        text = self.browser.find_element(*self.ContactForm1)
+        text = self.browser.find_element(*self.contact_form_1)
         return text.text
 
     def get_form_text2(self):
-        text = self.browser.find_element(*self.ContactForm2)
+        text = self.browser.find_element(*self.contact_form_2)
         return text.text
 
-    def sh_tweet(self):
-        element = self.browser.find_element(*self.ShTweet)
+    def share_tweet(self):
+        element = self.browser.find_element(*self.sh_tweet)
         element.click()
 
-    def sh_facebook(self):
-        element = self.browser.find_element(*self.ShFacebook)
+    def share_facebook(self):
+        element = self.browser.find_element(*self.sh_facebook)
         element.click()
 
-    def sh_pocket(self):
-        self.browser.find_element(*self.ShPocket).click()
+    def share_pocket(self):
+        self.browser.find_element(*self.sh_pocket).click()
 
-    def sh_linkedin(self):
-        element = self.browser.find_element(*self.ShLinkedIn)
+    def share_linkedin(self):
+        element = self.browser.find_element(*self.sh_linkedin)
         element.click()
 
-    def sh_tumblr(self):
-        element = self.browser.find_element(*self.ShTumblr)
+    def share_tumblr(self):
+        element = self.browser.find_element(*self.sh_tumblr)
         element.click()
 
-    def tweet(self):
-        element = self.browser.find_element(*self.Twitter)
+    def link_tweet(self):
+        element = self.browser.find_element(*self.twitter)
         element.click()
 
-    def linkedin(self):
-        element = self.browser.find_element(*self.LinkedIn)
+    def link_linked_in(self):
+        element = self.browser.find_element(*self.linkedin)
         element.click()
 
-    def email(self):
-        element = self.browser.find_element(*self.Email)
+    def link_email(self):
+        element = self.browser.find_element(*self.email)
         element.click()
 
-    def tumblr(self):
-        element = self.browser.find_element(*self.Tumblr)
+    def link_tumblr(self):
+        element = self.browser.find_element(*self.tumblr)
         element.click()
 
-    def facebook(self):
-        element = self.browser.find_element(*self.Facebook)
+    def link_facebook(self):
+        element = self.browser.find_element(*self.facebook)
         element.click()
