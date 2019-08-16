@@ -5,13 +5,16 @@
 - [BenWeese.com](https://benweese.com)
 
 # Python Automation
-This project is for practiceing Python, Selenuim, and Pytest. You can find the link for the template above for creating your own automation. To learn more you can check out the [Wiki](https://github.com/benweese/Python-Automation/wiki) for this repo where I document what I have learned. 
+This project is for practicing Python, Selenium, and Pytest. You can find the link for the template above for creating your own automation. To learn more you can check out the [Wiki](https://github.com/benweese/Python-Automation/wiki) for this repo where I document what I have learned. 
+
+## Badges
+[![CircleCI](https://circleci.com/gh/benweese/Python-Automation/tree/master.svg?style=shield)](https://circleci.com/gh/benweese/Python-Automation/tree/master) ![GitHub](https://img.shields.io/github/license/benweese/Python-Automation.svg)  ![GitHub issues](https://img.shields.io/github/issues-raw/benweese/Python-Automation.svg) [![StackShare](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](https://stackshare.io/benweese/python-automation)
 
 ## Motivation
-This is to keep my automations skills sharp.
+This is to keep my automation skills sharp.
 
-# Badges
-[![CircleCI](https://circleci.com/gh/benweese/Python-Automation/tree/master.svg?style=shield)](https://circleci.com/gh/benweese/Python-Automation/tree/master) ![GitHub](https://img.shields.io/github/license/benweese/Python-Automation.svg)  ![GitHub issues](https://img.shields.io/github/issues-raw/benweese/Python-Automation.svg) [![StackShare](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](https://stackshare.io/benweese/python-automation)
+## Notification
+This automation is happy path only and does not test for failures. It is an example and learning on how it can done. If you wish to test more thoroughly then I would suggest adding Pytest-BDD and use a Scenario Outline to test many different scenarios including failures.
 
 ## Tools
 <b>Built with</b>
@@ -20,10 +23,10 @@ This is to keep my automations skills sharp.
 <b>Testing Language</b>
 - [Selenium](https://www.seleniumhq.org/)
 
-<b>Continuous Intergration</b>
+<b>Continuous Integration</b>
 - [CircleCI](https://circleci.com/)
 
-<b>Depandacy Maintenance </b>
+<b>Dependency Maintenance </b>
 - [Dependabot by Github](https://dependabot.com/)
 
 <b>Security</b>
