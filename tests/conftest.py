@@ -20,10 +20,14 @@ __status__ = "refactor"
 
 @pytest.fixture
 def browser():
-    """
-     Configures the chrome browser for use.
-    """
-    driver = Chrome(executable_path=os.getcwd() + '/chromedriver')
-    driver.implicitly_wait(10)
-    yield driver
-    driver.quit()
+	"""
+	Configures the chrome browser for use.
+	"""
+	path = os.getcwd()
+	if path == "/home/circleci/project":
+		driver = Chrome(executable_path=path + '/chromedriver_linux')
+	else:
+		driver = Chrome(executable_path=path + '/chromedriver')
+	driver.implicitly_wait(10)
+	yield driver
+	driver.quit()
