@@ -65,20 +65,38 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-class formsPOM:
+class FormsPOM(object):
+    """
+    This is the Page Object Model used in test_forms_Page.py for the filling out forms section
+    of Ultimate QA's Automation Exercises.
+    """
     URL = 'https://www.ultimateqa.com/filling-out-forms/'
 
-    ContactForm1 = (By.ID, 'et_pb_contact_form_0')
-    ContactForm2 = (By.ID, 'et_pb_contact_form_1')
+    contact_form_1 = (By.ID, 'et_pb_contact_form_0')
+    contact_form_2 = (By.ID, 'et_pb_contact_form_1')
 
-    ContactName1 = (By.ID, 'et_pb_contact_name_0')
-    ContactName2 = (By.ID, 'et_pb_contact_name_1')
-    ...
-    Twitter = (By.CLASS_NAME, 'swp_share_link')
-    LinkedIn = (By.CLASS_NAME, 'swp_linkedin')
-    Email = (By.CLASS_NAME, 'swp_email')
-    Tumblr = (By.CLASS_NAME, 'swp_tumblr')
-    Facebook = (By.CLASS_NAME, 'swp_facebook')
+    contact_name_1 = (By.ID, 'et_pb_contact_name_0')
+    contact_name_2 = (By.ID, 'et_pb_contact_name_1')
+
+    contact_message_1 = (By.ID, 'et_pb_contact_message_0')
+    contact_message_2 = (By.ID, 'et_pb_contact_message_1')
+
+    submit_1 = (By.CSS_SELECTOR, "#et_pb_contact_form_0 button.et_pb_contact_submit")
+    submit_2 = (By.CSS_SELECTOR, "#et_pb_contact_form_1 button.et_pb_contact_submit")
+
+    captcha = (By.NAME, 'et_pb_contact_captcha_1')
+
+    sh_tweet = (By.CLASS_NAME, 'share-twitter')
+    sh_facebook = (By.CLASS_NAME, 'share-facebook')
+    sh_pocket = (By.CLASS_NAME, 'share-pocket')
+    sh_linkedin = (By.CLASS_NAME, 'share-linkedin')
+    sh_tumblr = (By.CLASS_NAME, 'share-tumblr')
+
+    twitter = (By.CLASS_NAME, 'swp_share_link')
+    linkedin = (By.CLASS_NAME, 'swp_linkedin')
+    email = (By.CLASS_NAME, 'swp_email')
+    tumblr = (By.CLASS_NAME, 'swp_tumblr')
+    facebook = (By.CLASS_NAME, 'swp_facebook')
 
     def __init__(self, browser):
         self.browser = browser
@@ -87,14 +105,14 @@ class formsPOM:
         self.browser.get(self.URL)
 
     def name_1(self, name):
-        name_input = self.browser.find_element(*self.ContactName1)
+        name_input = self.browser.find_element(*self.contact_name_1)
         name_input.send_keys(name)
 
     def get_name_1(self):
-        return self.browser.find_element(*self.ContactName1).get_attribute('value')
+        return self.browser.find_element(*self.contact_name_1).get_attribute('value')
     ...
     def captcha_calc(self):
-        captcha = self.browser.find_element(*self.Captcha)
+        captcha = self.browser.find_element(*self.captcha)
         cap1 = captcha.get_attribute('data-first_digit')
         cap2 = captcha.get_attribute('data-second_digit')
 
@@ -110,11 +128,10 @@ import time
 from POMS.FormsPOM import formsPOM
 
 
-
 def test_form1(browser):
     name = 'John Doe'
 
-    forms_page = formsPOM(browser)
+    forms_page = FormsPOM(browser)
     forms_page.load()
     forms_page.name_1(name)
     assert forms_page.get_name_1() == name
