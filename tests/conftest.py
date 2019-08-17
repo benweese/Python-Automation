@@ -25,9 +25,9 @@ def browser():
 	Configures the chrome browser for use.
 	"""
 	chrome_options = Options()
-	chrome_options.addArguments("--no-sandbox")
-	chrome_options.addArguments("--disable-gpu")
-	chrome_options.addArguments("--window-size=1400x1200")
+	chrome_options.add_argument("--no-sandbox")
+	chrome_options.add_argument("--disable-gpu")
+	chrome_options.add_argument("--window-size=1400x1200")
 	chrome_options.add_argument("--disable-extensions")
 
 	path = os.getcwd()
