@@ -8,6 +8,7 @@ import os
 
 import pytest
 from selenium.webdriver import Chrome
+from selenium.webdriver.chrome.options import Options
 
 __author__ = "Ben Weese"
 __copyright__ = "Copyright 2019, Python Automation"
@@ -23,11 +24,18 @@ def browser():
 	"""
 	Configures the chrome browser for use.
 	"""
+	chrome_options = Options()
+	chrome_options.addArguments("--no-sandbox")
+	chrome_options.addArguments("--disable-gpu")
+	chrome_options.addArguments("--window-size=1400x1200")
+	chrome_options.add_argument("--disable-extensions")
+
 	path = os.getcwd()
 	if path == "/home/circleci/project":
-		driver = Chrome(executable_path=path + '/chromedriver_linux')
+		chrome_options.add_argument("--headless")
+		driver = Chrome(executable_path=path + '/chromedriver_linux', chrome_options=chrome_options)
 	else:
-		driver = Chrome(executable_path=path + '/chromedriver')
+		driver = Chrome(executable_path=path + '/chromedriver', chrome_options=chrome_options)
 	driver.implicitly_wait(10)
 	yield driver
 	driver.quit()
