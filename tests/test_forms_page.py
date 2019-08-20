@@ -155,7 +155,7 @@ def test_share_linkedin(browser):
 	time.sleep(10)
 
 	# nw_url = 'https://www.linkedin.com/m/login/'
-	nw_url = 'https://www.linkedin.com/cws/share?url=https%3A%2F%2Fwww.ultimateqa.com%2Fcomplicated-page%2F'
+	nw_url = 'https://www.linkedin.com/cws/share/?token&isFramed=false&url=https%3A%2F%2Fwww.ultimateqa.com%2Ffilling-out-forms%2F'
 	assert browser.current_url == nw_url
 	browser.quit()
 
@@ -217,7 +217,7 @@ def test_linkedin_link(browser):
 	browser.switch_to.window(new_window)
 	time.sleep(10)
 
-	nw_url = 'https://www.linkedin.com/m/login/'
+	nw_url = 'https://www.linkedin.com/cws/share/?url=https%3A%2F%2Fwww.ultimateqa.com%2Ffilling-out-forms%2F'
 	assert browser.current_url == nw_url
 	browser.quit()
 
