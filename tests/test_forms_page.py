@@ -154,7 +154,7 @@ def test_share_linkedin(browser):
 	browser.switch_to.window(new_window)
 	time.sleep(10)
 
-	// nw_url = 'https://www.linkedin.com/m/login/'
+	# nw_url = 'https://www.linkedin.com/m/login/'
 	nw_url = 'https://www.linkedin.com/cws/share?url=https%3A%2F%2Fwww.ultimateqa.com%2Fcomplicated-page%2F'
 	assert browser.current_url == nw_url
 	browser.quit()
