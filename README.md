@@ -154,6 +154,43 @@ def test_form1(browser):
         browser.quit()
 ```
 
+<b>API Test</b>
+```
+def swapi_films(episode):
+	"""
+	Gets the films listed in the api.
+	:param episode:
+	:return: response json
+	"""
+	response = requests.get(SWAPI_API + 'films/' + str(episode))
+	return response
+
+
+def swapi_film_code(episode):
+	"""
+	Asserts that a 200 was returned
+	:param episode:
+	"""
+	assert swapi_films(episode).status_code == 200
+
+
+def swapi_films_episode(name, episode):
+	"""
+	This checks that all the films are in the response.
+	:param name:
+	:param episode:
+	"""
+	assert name.lower() == swapi_films(episode).json()['title'].lower()
+
+
+def test_episode_1():
+	"""
+	This runs through episode 1.
+	"""
+	swapi_film_code(1)
+	swapi_films_episode('A New Hope', 1)
+```
+
 ## Documentation
 - [Automate the Boring Stuff with Python](https://automatetheboringstuff.com/chapter11/)
 - [Behavior Driven Python with pytest-bdd](https://testautomationu.applitools.com/behavior-driven-python-with-pytest-bdd/)
