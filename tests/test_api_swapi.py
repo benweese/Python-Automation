@@ -33,7 +33,7 @@ def swapi_films_episode(name, episode):
 	assert name.lower() == swapi_films(episode).json()['title'].lower()
 
 
-def episode_test():
+def test_episode_test():
 	"""
 	This runs through every test.
 	"""
