@@ -13,7 +13,7 @@ jobs:
       
   build:
     runs-on: ubuntu-latest
-    container: benweese/test-automation
+    container: benweese/test_automation
     steps:
     - uses: actions/checkout@v1
     - name: Install dependencies
