@@ -1,27 +1,13 @@
 workflow "Main Workflow" {
   on = "push"
-  resolves = ["Pytest"]
+  resolves = ["Setup Python"]
 }
 
-action "setup-python" {
-  uses = "setup-python"
-  secrets = ["GITHUB_TOKEN"]
+action "Checkout" {
+  uses = "actions/checkout@v1"
 }
 
-action "Install dependencies" {
-  uses = "Install-dependencies"
-  needs = ["setup-python"]
-  secrets = ["GITHUB_TOKEN"]
-}
-
-action "Lint" {
-  uses = "flake8"
-  needs = ["Install dependencies"]
-  secrets = ["GITHUB_TOKEN"]
-}
-
-action "Pytest" {
-  uses = "Pytest"
-  needs = ["Lint"]
-  secrets = ["GITHUB_TOKEN"]
+action "Setup Python" {
+  uses = "actions/setup-python@v1"
+  needs = ["Checkout"]
 }
