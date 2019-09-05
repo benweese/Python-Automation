@@ -1,6 +1,6 @@
-workflow "Main Workflow" {
-  on = "push"
+workflow "Push" {
   resolves = ["Setup Python"]
+  on = "push"
 }
 
 action "Checkout" {
