@@ -3,28 +3,20 @@ name: Python package
 on: [push]
 
 jobs:
-  build:
-
-    runs-on: macOS-10.14
-    strategy:
-      max-parallel: 4
-      matrix:
-        python-version: [3.5, 3.6, 3.7]
-
+  build_container:
+    runs-on: ubuntu-latest
+ 
     steps:
     - uses: actions/checkout@v1
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v1
-      with:
-        python-version: ${{ matrix.python-version }}
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile
+      
+  build:
+    container: benweese/test-automation
+    steps:
+    - uses: actions/checkout@v1
     - name: Install dependencies
-      run: |
-       brew update
-       brew install brew-cask-completion
-       brew cask install google-chrome
-       brew cleanup
-       sudo pip3 install pipenv
-       pipenv install --dev
+      run: pipenv install --dev
     - name: Lint with flake8
       run: |
         pip install flake8
