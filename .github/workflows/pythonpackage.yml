@@ -14,7 +14,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     needs: build_container
-    container: python-automation
+    container: benweese/test_automation
     steps:
     - uses: actions/checkout@v1
     - name: Install dependencies
@@ -26,12 +26,5 @@ jobs:
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-
-  test:
-    runs-on: ubuntu-latest
-    needs: build_container
-    container: python-automation
-    steps:
-    - uses: actions/checkout@v1
     - name: Test with pytest
       run: pipenv run pytest --junitxml=~/test-results/junit/results.xml
