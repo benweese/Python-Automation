@@ -28,6 +28,10 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
   test:
+    runs-on: ubuntu-latest
+    needs: build_container
+    container: python-automation
+    steps:
+    - uses: actions/checkout@v1
     - name: Test with pytest
-      run: |
-        pipenv run pytest --junitxml=~/test-results/junit/results.xml
+      run: pipenv run pytest --junitxml=~/test-results/junit/results.xml
