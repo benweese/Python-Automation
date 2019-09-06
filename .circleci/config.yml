@@ -6,16 +6,15 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
-      -run:
-        name: Build the Docker image
-        command: docker build . --file Dockerfile
+      - run:
+          name: Build the Docker image
+          command: docker build . --file Dockerfile
   
   test:
     docker:
       - image: benweese/python-automation
         environment: # environment variables for primary container
           PIPENV_VENV_IN_PROJECT: true
-
     steps:
       - checkout
       - run:
