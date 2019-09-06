@@ -9,7 +9,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --name python-automation
+      run: docker build -t python-automation . --file Dockerfile
       
   build:
     runs-on: ubuntu-latest
