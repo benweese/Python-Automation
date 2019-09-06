@@ -3,18 +3,16 @@ name: Python package
 on: [push]
 
 jobs:
+  runs-on: ubuntu-latest
   build_container:
-    runs-on: ubuntu-latest
- 
     steps:
     - uses: actions/checkout@v1
     - name: Build the Docker image
-      run: docker build . --file Dockerfile
+      run: docker build . --file Dockerfile --name python-automation
       
   build:
     needs: build_container
-    runs-on: ubuntu-latest
-    container: benweese/test_automation
+    container: python-automation
     steps:
     - uses: actions/checkout@v1
     - name: Install dependencies
