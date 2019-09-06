@@ -2,7 +2,17 @@ version: 2
 jobs:
   build:
     docker:
-      - image: benweese/test_automation
+      - image: docker:stable-git
+    steps:
+      - checkout
+      - setup_remote_docker
+      -run:
+        name: Build the Docker image
+        command: docker build . --file Dockerfile
+  
+  test:
+    docker:
+      - image: benweese/python-automation
         environment: # environment variables for primary container
           PIPENV_VENV_IN_PROJECT: true
 
@@ -10,9 +20,11 @@ jobs:
       - checkout
       - run:
           name: Install Dependencies
-          command: |
-            pipenv install --dev
+          command: pipenv install --dev
       - run:
           name: Run Test
-          command: |
-            pipenv run pytest
+          command: pipenv run pytest --junitxml=~/test-results/junit/results.xml
+      - store_test_results: # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
+          path: ~/test-results
+      - store_artifacts: # Upload test summary for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
+          path: ~/test-results/junit
