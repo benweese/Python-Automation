@@ -3,14 +3,16 @@ name: Python package
 on: [push]
 
 jobs:
-  runs-on: ubuntu-latest
+
   build_container:
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
     - name: Build the Docker image
       run: docker build . --file Dockerfile --name python-automation
       
   build:
+    runs-on: ubuntu-latest
     needs: build_container
     container: python-automation
     steps:
@@ -24,6 +26,8 @@ jobs:
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+
+  test:
     - name: Test with pytest
       run: |
         pipenv run pytest --junitxml=~/test-results/junit/results.xml
