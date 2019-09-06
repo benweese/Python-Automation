@@ -11,7 +11,6 @@ jobs:
       - run:
           name: Install Dependencies
           command: |
-            sudo pip3 install pipenv
             pipenv install --dev
       - run:
           name: Run Test
