@@ -17,7 +17,8 @@ jobs:
     strategy:
       max-parallel: 4
     needs: build_container
-    container: benweese/python-automation
+    container: 
+      image: benweese/python-automation
       options: --init
 
     steps:
