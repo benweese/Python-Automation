@@ -16,21 +16,13 @@ jobs:
     runs-on: macOS-10.14
     strategy:
       max-parallel: 4
+    needs: build_container
+    container: benweese/python-automation
 
     steps:
     - uses: actions/checkout@v1
-    - name: Set up Python 3.7
-      uses: actions/setup-python@v1
-      with:
-        python-version: 3.7
     - name: Install dependencies
-      run: |
-       brew update
-       brew install brew-cask-completion
-       brew cask install google-chrome
-       brew cleanup
-       sudo pip3 install pipenv
-       pipenv install --dev
+      run: pipenv install --dev
     - name: Lint with flake8
       run: |
         pip install flake8
