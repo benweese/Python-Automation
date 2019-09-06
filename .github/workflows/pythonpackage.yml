@@ -19,7 +19,7 @@ jobs:
     needs: build_container
     container: 
       image: benweese/python-automation
-      options: -t -i
+      options: -t -i --stop-timeout 300
 
     steps:
     - uses: actions/checkout@v1
