@@ -5,7 +5,6 @@ conftest.py: Configures the chrome browser for use.
 """
 
 import os
-import logging
 
 import pytest
 from selenium.webdriver import Chrome
@@ -32,8 +31,7 @@ def browser():
 	chrome_options.add_argument("--disable-extensions")
 
 	path = os.getcwd()
-	logging.info(path)
-	if path == "/root/project/":
+	if path == "/root/project":
 		chrome_options.add_argument("--headless")
 		driver = Chrome(executable_path='/usr/bin/chromedriver', chrome_options=chrome_options)
 	else:
