@@ -19,7 +19,7 @@ jobs:
     needs: build_container
     container: 
       image: benweese/python-automation
-      options: --init
+      options: -t -i
 
     steps:
     - uses: actions/checkout@v1
