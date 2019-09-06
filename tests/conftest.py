@@ -31,11 +31,11 @@ def browser():
 	chrome_options.add_argument("--disable-extensions")
 
 	path = os.getcwd()
-	if path == "/home/circleci/project":
-		chrome_options.add_argument("--headless")
-		driver = Chrome(executable_path=path + '/chromedriver_linux', chrome_options=chrome_options)
-	else:
-		driver = Chrome(executable_path=path + '/chromedriver', chrome_options=chrome_options)
-	driver.implicitly_wait(10)
-	yield driver
-	driver.quit()
+#	if path == "/home/circleci/project":
+	chrome_options.add_argument("--headless")
+	driver = Chrome(executable_path=path + '/chromedriver_linux', chrome_options=chrome_options)
+# 	else:
+# 		driver = Chrome(executable_path=path + '/chromedriver', chrome_options=chrome_options)
+# 	driver.implicitly_wait(10)
+# 	yield driver
+# 	driver.quit()
