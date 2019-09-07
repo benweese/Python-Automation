@@ -1,5 +1,5 @@
 FROM alpine:latest
-MAINTAINER ben.weese@gmail.com
+LABEL maintainer="ben@benweese.dev"
 
 RUN apk update && apk add \
     curl \
