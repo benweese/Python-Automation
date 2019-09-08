@@ -18,9 +18,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Dependencies
-          command: pipenv install --dev
-      - run:
           name: Run Test
           command: pipenv run pytest --junitxml=~/test-results/junit/results.xml
       - store_test_results: # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
