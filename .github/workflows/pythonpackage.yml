@@ -13,7 +13,7 @@ jobs:
       
   build:
 
-    runs-on: macOS-10.14
+    runs-on: macos-latest
     strategy:
       max-parallel: 4
 
